@@ -1,30 +1,53 @@
+/**
+ * @packageDocumentation
+ * @module OrxeOverlay
+ */
+
 import { html, customElement, LitElement, property } from 'lit-element';
 import { OVERLAYTYPES } from './properties';
 import styles from './overlay-css';
 
 @customElement('orxe-overlay')
 export default class OrxeOverlay extends LitElement {
-  // overlay heading
+    /**
+    *
+    * @memberof OrxeOverlay
+    *  overlay heading
+    */
   @property({ type: String, reflect: true, attribute: 'title' })
   title = 'Heading';
 
-  // overlay-type to define type of overlays
-  /* values are
-  popup-overlay,
-  slider-overlay,
-  full-overlay */
+  /**
+  * @memberof OrxeOverlay
+  * overlay-type to define type of overlays
+  * values are
+  * popup-overlay,
+  * slider-overlay,
+  * full-overlay **/
   @property({ type: String, reflect: true, attribute: 'overlay-type' })
   overlayType = OVERLAYTYPES.POPUPOVERLAY;
 
-  // area-label for close button
+  /**
+   *
+   * @memberof OrxeOverlay
+   * area-label for close button
+   **/
   @property({ type: String, reflect: true, attribute: 'a11y-label-close' })
   a11yLabelClose = 'Close Button';
 
-  // area-label for Tertiary button.  require when overlay-type is full-overlay
+  /**
+   *
+   * @memberof OrxeOverlay
+   * area-label for Tertiary button.  require when overlay-type is full-overlay
+   **/
   @property({ type: String, reflect: true, attribute: 'a11y-label-tertiary' })
   a11yLabelTertiary = 'Tertiary Button';
 
-  // area-label for Secondary button. require when overlay-type is full-overlay
+  /**
+   *
+   * @memberof OrxeOverlay
+   * area-label for Secondary button. require when overlay-type is full-overlay
+   **/
   @property({ type: String, reflect: true, attribute: 'a11y-label-secondary' })
   a11yLabelSecondary = 'Secondary Button';
 
@@ -46,6 +69,8 @@ export default class OrxeOverlay extends LitElement {
   }
 
   /**
+    *
+    * @memberof OrxeOverlay
     * Implement `render` to define a template for overlay element.
     */
   render() {
@@ -78,7 +103,11 @@ export default class OrxeOverlay extends LitElement {
     `;
   }
 
-  // to destroy the overlay
+  /**
+   *
+   * @memberof OrxeOverlay
+   *   to destroy the overlay
+   */
   private _distroyOverlay(e: Event) {
     e.stopImmediatePropagation();
     if ((e.target as HTMLElement).id === 'container-outer' || (e.target as HTMLElement).id === 'close-button') {
@@ -95,6 +124,8 @@ export default class OrxeOverlay extends LitElement {
     this.dispatchEvent(customEvent);
   }
   /**
+   *
+   * @memberof OrxeOverlay
    *  Getting styles from components custom scss file
    */
   static styles = styles;
